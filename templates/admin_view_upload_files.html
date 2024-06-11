@@ -1,0 +1,28 @@
+{% include 'admin_header.html' %}
+<center>
+<br><br>
+       
+       <h1>View Files</h1>
+  <table border="3" class="table" style="width: 800px;color: black">
+  <tr>
+    <th>SL.No</th>
+    <th>User</th>
+    <th>Email</th>
+    <th>image</th>
+    <th>Output</th>
+    <th></th>
+  </tr>
+  {% for row in data['user'] %}
+  <tr>
+    <td>{{loop.index}}</td>
+    <td>{{row['fname']}} {{row['lname']}}</td>
+    <td>{{row['email']}}</td>
+    <td><a href="/{{row['image']}}"><img src="/{{row['image']}}" height="100" width="100"></a></td>
+    <td>{{row['output']}}</td>
+  </tr>
+  {% endfor %}
+  </table>            
+            		
+</center>
+<br><br>
+{% include 'footer.html' %}

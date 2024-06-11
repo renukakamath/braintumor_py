@@ -1,0 +1,51 @@
+{% include "user_header.html" %}
+
+<style type="text/css">
+	#example1 {
+  box-shadow: 5px 10px #888888;
+}
+</style>				
+
+<br><br><br>		
+<form method="post">
+	<center>
+		<h1 style="color: black">Send Enquiry</h1>
+		<table  class="table" style="width: 600px;color: black">
+			<tr>
+				<th>Enquiry</th>
+				<td><textarea required="" class="form-control"  name="Complaint"></textarea></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" class="btn btn-info" value="SEND" name="submit"></td>
+			</tr>
+		</table>
+
+		
+
+		<center>
+		<h1 style="color: white">Complaints</h1>
+		<table id="example1" class="table" style="width: 600px;color: black">
+			<tr>
+				<th>Index</th>
+				<th>Enquiry</th>
+				<th>Reply</th>
+				<th>Date and time</th>
+			</tr>
+
+			{% for row in data['complaints'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['complaints'] }}</td>
+				<td>{{ row['reply'] }}</td>
+				<td>{{ row['date'] }}</td>
+			</tr>
+
+			{% endfor %}
+
+		</table>
+	</center>
+</form>
+<br>
+<br><br><br>
+{% include "footer.html" %}

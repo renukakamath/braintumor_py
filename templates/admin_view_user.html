@@ -1,0 +1,27 @@
+{% include 'admin_header.html' %}
+<center>
+<br><br>
+       
+       <h1>View Users</h1>
+  <table border="3" class="table" style="width: 800px;color: black">
+  <tr>
+    <th>SL.No</th>
+    <th>User</th>
+    <th>Place</th>
+    <th>Phone</th>
+    <th>Email</th>
+  </tr>
+  {% for row in data['user'] %}
+  <tr>
+    <td>{{loop.index}}</td>
+    <td>{{row['fname']}} {{row['lname']}}</td>
+    <td>{{row['place']}}</td>
+    <td>{{row['phone']}}</td>
+    <td>{{row['email']}}</td>
+  </tr>
+  {% endfor %}
+  </table>            
+            		
+</center>
+<br><br>
+{% include 'footer.html' %}

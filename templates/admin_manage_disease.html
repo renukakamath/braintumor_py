@@ -1,0 +1,50 @@
+{% include 'admin_header.html' %}
+<center>
+	<br><br><br>
+<form method="post">
+	<h3>Manage Disease</h3>
+	{% if data['up'] %}
+	<table border="3" class="table" style="width: 1000px;color: black">
+		<tr>
+			<th>Disease Details</th>
+			<td><input type="text" name="disease" value="{{data['up'][0]['disease']}}" required class="form-control"></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" name="update" value="Update" class="btn btn-success"></td>
+		</tr>
+	</table>
+
+	{% else %}
+	<table border="3" class="table" style="width: 1000px;color: black">
+		<tr>
+			<th>Disease Details</th>
+			<td><input type="text" name="disease" required class="form-control"></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" name="submit" value="Submit" class="btn btn-success"></td>
+		</tr>
+	</table>
+	{% endif %}
+	<table class="table" style="width: 1000px; color: black;">
+		<tr>
+			<th>Index</th>
+			<th>Disease</th>
+			<th></th><th></th><th></th><th></th>
+		</tr>
+		{% for i in data['view'] %}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{i['disease']}}</td>
+			<td><a href="?action=update&dis_id={{i['disease_id']}}" class="btn btn-info">Update</a></td>
+			<td><a href="?action=remove&dis_id={{i['disease_id']}}" class="btn btn-danger">Remove</a></td>
+			<td><a href="adimin_manage_symptoms?dis_id={{i['disease_id']}}" class="btn btn-info">Symptoms</a></td>
+			<td><a href="admin_manage_medicines?dis_id={{i['disease_id']}}" class="btn btn-info">Medicine</a></td>
+
+
+		</tr>
+		{% endfor %}
+	</table>
+</form>
+
+</center>
+{% include 'footer.html' %}

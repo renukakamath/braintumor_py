@@ -1,0 +1,36 @@
+{% include 'admin_header.html' %}
+<center>
+<br><br>
+
+<form method="post">
+       
+       <h1>View Complaints</h1>
+  <table border="3" class="table" style="width: 1000px;color: black">
+  <tr>
+    <th>SL.No</th>
+    <th>User</th>
+    <th>Email</th>
+    <th>Enquiry</th>
+    <th>Date</th>
+    <th>Reply</th>
+  </tr>
+  {% for row in data['complaints'] %}
+  <tr>
+    <td>{{loop.index}}</td>
+    <td>{{row['fname']}} {{row['lname']}}</td>
+    <td>{{row['email']}}</td>
+     <td>{{row['complaints']}}</td>
+        
+    <td>{{row['date']}}</td>
+    {% if row['reply'] == "pending" %}
+    <td><input type="text" class="form-control" name="reply{{loop.index}}" class="form-control"><input type="submit" name="submit{{loop.index}}" value="Submit" class="btn btn-success"></td>
+    {% else %}
+    <td>{{row['reply']}}</td>
+    {% endif %}
+  </tr>
+  {% endfor %}
+  </table>            
+ </form>           		
+</center>
+<br><br>
+{% include 'footer.html' %}

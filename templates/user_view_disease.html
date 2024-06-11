@@ -1,0 +1,30 @@
+{% include 'user_header.html' %}
+<style type="text/css">
+	#example1 {
+  box-shadow: 5px 10px;
+}
+</style>
+<center>
+	<br><br>
+<form method="post">
+	<h2>Disease And Medicines</h2>
+	<table id="example1" border="1"  class="table table-hover" style="width: 600px;color: black">
+		<tr>
+			<th>Index</th>
+			<th>Disease</th>
+			<th>Symptoms</th>
+			<th>Medicine</th>
+		</tr>	
+		{% for i in data['view'] %}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{i['disease']}}</td>
+			<td>{{i['symptoms']}}</td>
+			<td>{{i['medicine']}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	
+</form>
+</center>
+{% include 'footer.html' %}

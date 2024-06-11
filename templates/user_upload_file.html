@@ -1,0 +1,41 @@
+{% include 'user_header.html' %}
+<br><br><br>
+<center>
+	 
+                    <form method="post" id="login" action="#" enctype="multipart/form-data" >
+              <table class="table" style="width: 400px;color: black;background:opacity: 0.5;">
+                 <h2 style="color: black">Upload File</h2>
+                <tr width="500">
+                  <td>File:</td>
+                  <td><input type="file" required="" class="form-control" name="file"></td>
+                </tr>
+          
+                <tr>
+                  <td colspan="2" align="center"><input type="submit" class="btn btn-success" name="upload" value="UPLOAD"></td>
+                </tr> 
+              </table>
+            </form>
+
+
+            <center>
+    <h1 style="color: white">FILES</h1>
+    <table class="table" style="width: 400px;color: black">
+      <tr>
+        <th>SL.NO</th>
+        <th>File</th>
+        <th>Output</th>
+      </tr>
+      {% for row in data['upload'] %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><a href="/{{ row['image'] }}"><img src="/{{ row['image'] }}" height="100" width="100"></a></td>
+        <td>{{row['output']}}</td>
+
+        <td><a href="user_basic_details?name={{row['output']}}">Enter Details</a></td>
+      </tr>
+
+      {% endfor %}
+
+    </table>
+</center>
+{% include 'footer.html' %}

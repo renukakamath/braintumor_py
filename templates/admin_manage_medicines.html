@@ -1,0 +1,62 @@
+{% include 'admin_header.html' %}
+<center>
+	<br><br>
+<form method="post">
+	<h3>Add Medicines</h3>
+
+	{% if data['up'] %}
+	<table border="3" class="table" style="width: 1000px;color: black">
+	
+		<tr>
+			<th>Age</th>
+			<td><input type="text" name="age" pattern="[0-9]{2}" value="{{data['up'][0]['age']}}" required class="form-control"></td>
+		</tr>
+		<tr>
+			<th>Medicines</th>
+			<td><input type="text" name="med" value="{{data['up'][0]['medicine']}}" required class="form-control"></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" name="update" value="Update" class="btn btn-success"></td>
+		</tr>
+		</tr>
+	</table>
+
+	{% else %}
+	<table border="3" class="table" style="width: 1000px;color: black">
+		<tr>
+			<th>Age</th>
+			<td><input type="text" name="age" pattern="[0-9]{2}" required class="form-control"></td>
+		</tr>
+		<tr>
+			<tr>
+			<th>Medicines</th>
+			<td><input type="text" name="med" required class="form-control"></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" name="submit" value="Submit" class="btn btn-success"></td>
+		</tr>
+		</tr>
+	</table>
+	{% endif %}
+	<table border="3" class="table" style="width: 1000px;color: black">
+		<tr>
+			<th>Index</th>
+			<th>Disease</th>
+			<th>Age</th>
+			<th>Medicine</th>
+			<th></th><th></th>
+		</tr>
+		{% for i in data['view'] %}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{i['disease']}}</td>
+			<td>{{i['age']}}</td>
+			<td>{{i['medicine']}}</td>
+			<td><a href="?action=update&med_id={{i['medicine_id']}}&dis_id={{i['disease_id']}}" class="btn btn-info">Update</a></td>
+			<td><a href="?action=remove&med_id={{i['medicine_id']}}&dis_id={{i['disease_id']}}" class="btn btn-danger">Remove</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+</form>
+</center>
+{% include 'footer.html' %}
